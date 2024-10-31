@@ -71,3 +71,22 @@ ionic g guard guards/autoLogin --implements CanActivate
 
 ### Halaman Home
 ![Halaman home](docs/home.png)
+
+### Diagram Alur
+
+```mermaid
+graph TD;
+    A[Start - Login Page] --> B[User Input Username & Password];
+    B --> C[Kirim Data ke API];
+    C --> D{Validasi API};
+    D -- Invalid --> E[Tampilkan Error];
+    E --> B;
+    D -- Valid --> F[Generate Token];
+    F --> G[Simpan Token & Data User];
+    G --> H[Update Auth State];
+    H --> I[Redirect ke Home Page];
+    I --> J{User Logout?};
+    J -- Yes --> K[Hapus Token & Data];
+    K --> B;
+    J -- No --> I;
+```
